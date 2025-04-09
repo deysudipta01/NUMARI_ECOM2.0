@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Namari - Free Landing Page Template</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" title="Favicon"/>
+
+
+    <!--=============== REMIX ICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/shipping.css') }}">
+
+
+
+
+    <!-- Namari Color CSS -->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/namari-color.css') }}">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+    <!-- Animate CSS-->
+
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css') }}">
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+
+
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="la-ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--End of Preloader-->
+
+<div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+    <div class="top-border wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></div>
+    <div class="right-border wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+    <div class="bottom-border wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;"></div>
+    <div class="left-border wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"></div>
+</div>
+
+<div id="wrapper">
+
+    <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
+        <div id="header" class="nav-collapse">
+            <div class="row clearfix">
+                <div class="col-1">
+
+                    <!--Logo-->
+                    <div id="logo">
+
+                        <!--Logo that is shown on the banner-->
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" id="banner-logo" alt="Landing Page"/>
+                    <!--End of Banner Logo-->
+
+                    <!--The Logo that is shown on the sticky Navigation Bar-->
+                    <img src="{{ url_for('static', filename='images/logo-2.png') }}" id="navigation-logo" alt="Landing Page"/>
+                    <!--End of Navigation Logo-->
+
+
+                    </div>
+                    <!--End of Logo-->
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+        </div><!--End of Header-->
+
+
+
+    </header>
+     <!--Main Content Area-->
+    <main id="content">
+
+
+           <!--products-->
+        <section id="clients" class="scrollto clearfix">
+            <div class="row clearfix">
+                <div class="section-heading">
+
+                        <p class="section-subtitle" style="font-size: 20px; font-weight: Medium;"><span style="color: green; font-weight: bold;">Just in case after making payment
+							you do not get an ORDER confirmation email from our website giving you your order number, do message us on whatsap xxxxxxxxx.
+							Do not worry your order and payment is safe and we will get back to you. </span>
+						</p>
+
+
+
+
+				</div>
+                <div class="content">
+                <h2 class="section-title">Complete Your Payment</h2>
+                <h3 class="section-title">Total Amount: ₹{{ amount / 100 }}</h3>
+                <p class="section-subtitle" style="font-size: 20px; font-weight: Medium;">It will redirect to a third-party page. Please do not refresh.</p>
+                <button id="rzp-button1" class="button button--full" type="button">
+                  <svg class="icon">
+                    <use xlink:href="#icon-shopping-bag" />
+                  </svg>Buy Now
+                </button>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </section>
+
+    </main>
+    <!--End of Footer-->
+
+</div>
+
+
+
+<style>
+    .button {
+    align-items: center;
+    background-color: var(--color-primary);
+    border-radius: 999em;
+    border-color: var(--color-primary) !important;
+    color: #fff !important;
+    display: flex;
+    gap: 0.5em;
+
+    justify-content: center;
+    max-width: 10rem;
+    padding-block: 0.75em;
+    padding-inline: 1em;
+    transition: 0.3s;
+}
+
+
+
+</style>
+
+<!-- Include JavaScript resources -->
+<script src="{{ url_for('static', filename='js/jquery.1.8.3.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/featherlight.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/featherlight.gallery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.enllax.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.stickyNavbar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/images-loaded.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/site.js') }}"></script>
+ <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ key }}",
+    "amount": "{{ amount }}",
+    "currency": "INR",
+    "name": "Your Company Name",
+    "description": "Test Transaction",
+    "order_id": "{{ order_id }}",
+    "handler": function (response) {
+        window.location.href = "/payment_success?payment_id=" + response.razorpay_payment_id + "&order_id=" + response.razorpay_order_id;
+    },
+    "theme": {
+        "color": "#3399cc"
+    },
+    "modal": {
+        "ondismiss": function () {
+            window.location.href = "/payment_failed";
+        }
+    }
+};
+
+// Bind the click event to the anchor tag
+document.getElementById('rzp-button1').addEventListener("click", function (e) {
+    rzp1 = new Razorpay(options);
+    rzp1.open();
+    e.preventDefault();
+});
+
+
+</script>
+
+
+
+
+</body>
+</html>

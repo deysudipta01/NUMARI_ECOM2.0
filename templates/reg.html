@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="static/css/register.css">
+</head>
+<body>
+
+<div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+
+                        <div id="otpModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>OTP Verification</h2>
+        <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6">
+        <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+</div>
+
+                        <form method="POST" class="register-form" id="register-form" onsubmit="return validateForm()">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="fullname" id="name" placeholder="Your Name" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="number" name="phone" id="phone" placeholder="Your ph no" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="email" id="email" placeholder="Your email" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="pass" placeholder="Password" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" required>
+                            </div>
+                            <!-- I Agree Checkbox -->
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term">
+                                <span><span></span></span>I agree to all statements in
+                                <a href="#" class="term-service">Terms of Service</a>
+                            </label>
+                        </div>
+
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+
+
+                            </div>
+
+
+
+                        </form>
+
+                        <!-- OTP Verification Modal -->
+
+
+
+
+                </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+</div>
+
+
+                            <!-- OTP Verification Modal (initially hidden) -->
+
+
+
+    <!-- Add JavaScript for Validation -->
+
+<!-- JavaScript for AJAX Requests -->
+<script>
+function validateForm() {
+        const agreeTerm = document.getElementById('agree-term');
+        if (!agreeTerm.checked) {
+            alert('Please agree to the Terms of Service before registering.');
+            return false;
+        }
+
+        // Check if passwords match
+        const password = document.getElementById('pass').value;
+        const rePassword = document.getElementById('re_pass').value;
+        if (password !== rePassword) {
+            alert('Passwords do not match!');
+            return false;
+        }
+
+        return true;
+    }
+
+    document.getElementById('register-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+        const formData = new FormData(this);
+
+        fetch('/register', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'success') {
+                // Show OTP modal only after successful registration
+                document.getElementById('otpModal').style.display = 'block';
+            } else {
+                alert(data.message || 'Registration failed. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    });
+
+    function closeModal() {
+        document.getElementById('otpModal').style.display = 'none';
+    }
+
+    function verifyOTP() {
+        let otp = document.getElementById('otpInput').value;
+        if (!otp || otp.length !== 6) {
+            alert('Please enter a valid 6-digit OTP');
+            return;
+        }
+
+        fetch('/verify_otp', {
+            method: 'POST',
+            body: JSON.stringify({ otp: otp }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('OTP Verified! Redirecting to login...');
+                window.location.href = data.redirect_url;
+            } else {
+                alert(data.message || 'Invalid OTP! Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error verifying OTP:', error);
+            alert('Error verifying OTP. Please try again.');
+        });
+    }
+</script>
+
+<style>
+/* OTP Modal Styling */
+<style>
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: antiquewhite;
+    padding: 20px;
+    margin: 10% auto;
+
+    text-align: center;
+    border-radius: 10px;
+}
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Style the checkbox container */
+.label-agree-term {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    display: inline-block;
+}
+
+/* Hide the default checkbox */
+.agree-term {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.label-agree-term span span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* When the checkbox is checked, add a green background */
+.agree-term:checked + .label-agree-term span span {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.label-agree-term span span:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.agree-term:checked + .label-agree-term span span:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.label-agree-term span span:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Style the terms link */
+.term-service {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.term-service:hover {
+    text-decoration: underline;
+}
+
+</style>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
+

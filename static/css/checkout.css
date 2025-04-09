@@ -1,0 +1,111 @@
+
+
+.modal-body {
+    background-color: #fff;
+    border-color: #fff;
+
+}
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+
+    left: 18rem;
+}
+
+.close {
+    color: #000;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+
+.theme-color{
+
+    color: #004cb9;
+}
+hr.new1 {
+    border-top: 2px dashed #fff;
+    margin: 0.4rem 0;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #004cb9;
+    border-color: #004cb9;
+    padding: 12px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 1px;
+    font-size: 17px;
+}
+
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #004cb9;
+    border-color: #004cb9;
+    padding: 12px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 1px;
+    font-size: 17px;
+}
+
+
+#cart-modal, #orders-modal, #about-model {
+    /* display: flex
+; */
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 700px;
+    max-height: 50%;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 20px;
+    top: 25rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+    position: fixed;
+    left: 50%;
+    width: 80%;
+    height: 100%;
+    max-width: 500px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    max-height: fit-content;
+    top: 20rem;
+}
+
+@media (max-width: 768px) {
+
+.modal-content {
+    width: 100%;
+
+
+    left: 0rem;
+    }
+
+    }

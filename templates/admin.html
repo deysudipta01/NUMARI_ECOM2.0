@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Admin Panel</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <!-- Bootstrap 5 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<body>
+
+    <!-- Sidebar and Page Layout -->
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-dark border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading text-white py-3 text-center fs-4">
+                <strong>E-Commerce Admin</strong>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="/admin" class="list-group-item list-group-item-action bg-dark text-white">Dashboard</a>
+                <a href="#" id="orders-link" class="list-group-item list-group-item-action bg-dark text-white" onclick="toggleOrdersSection()">Orders</a>
+                <!-- Product Button with Dropdown for Two Sections -->
+                <a href="#" id="products-link" class="list-group-item list-group-item-action bg-dark text-white" onclick="toggleProductButtons()">Product1</a>
+
+                <a href="#" id="users-link" class="list-group-item list-group-item-action bg-dark text-white" onclick="toggleUsers()">Users</a>
+                <a href="#" id="products2-link" class="list-group-item list-group-item-action bg-dark text-white" onclick="toggleProduct2Buttons()">....</a>
+                <a href="{{ url_for('logout2') }}" class="list-group-item list-group-item-action bg-danger text-white">Logout</a>
+            </div>
+        </div>
+
+<div id="main-wrapper" class="d-flex">
+
+        <!-- Orders Section (Initially Hidden) -->
+        <div id="orders-section" style="display: none; width: 100%;">
+            <h2 class="mb-4">Order Management</h2>
+            <button id="order-btn" class="btn btn-primary mb-3" onclick="toggleOrders()">View Orders</button>
+
+            <!-- Order Container with compact cards -->
+            <div id="order-container" class="row row-cols-1 row-cols-md-3" ></div>
+
+            <!-- Old Orders Section -->
+            <h2 class="mt-5">Old Orders</h2>
+            <div class="d-flex mb-3">
+                <button id="old-order-btn" class="btn btn-primary me-2" onclick="toggleOldOrders()">Show Old Orders</button>
+                <input type="text" id="search-old-orders" class="form-control me-2" placeholder="Search by Phone Number">
+                <button class="btn btn-secondary" onclick="searchOldOrders()">Search</button>
+            </div>
+
+            <div id="old-order-container" class="row row-cols-1 row-cols-md-3 hidden"></div>
+        </div>
+
+
+
+        <div id="product-sections" style="display: none; width: 100vw; height: 100vh; overflow-y: auto;">
+            <!-- Product Section -->
+                        <h2 class="mt-5">Product Management</h2>
+                        <form id="product-form" class="mt-3 mb-4">
+                            <input type="hidden" id="product-id">
+                            <div class="col-md-2 mb-4">
+                                <select id="category" class="form-select" required>
+                                    <option value="" disabled selected>Select Category</option>
+                                    <option value="cactus">Cactus</option>
+                                    <option value="clothing">Clothing</option>
+                                    <option value="books">Books</option>
+                                </select>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-md-2">
+                                    <input type="text" id="id" class="form-control" placeholder="Product Id" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="name" class="form-control" placeholder="Product Name" required>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number" id="price" class="form-control" placeholder="Price" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <textarea id="description" class="form-control" placeholder="Description" required></textarea>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="d-flex gap-2">
+                                        <input type="file" id="image-upload" accept="image/*" class="form-control">
+                                        <button type="button" class="btn btn-primary" id="add-image-btn">+</button>
+                                    </div>
+                                    <div id="image-preview" class="mt-2 d-flex flex-wrap"></div>
+                                    </div>
+                                <div class="col-md-1">
+                                    <button type="submit" id="submit-btn" class="btn btn-success w-100">Add</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <h2 class="mt-4">Product List</h2>
+                        <div id="product-container" class="row row-cols-1 row-cols-md-3 g-3"></div>
+
+
+
+        </div>
+
+
+
+
+
+
+        <div id="user-container" class="mt-3" style="display: none;">
+            <h3 class="text-center">User List</h3>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>User ID</th>
+                        <th>Full Name</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list">
+                    <!-- User data will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Main Content -->
+        <div id="page-content-wrapper" class="w-100">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="menu-toggle">☰</button>
+                </div>
+            </nav>
+
+            <div class="card-container">
+                <div class="card" id="user-card">
+                    <h2>Total Users</h2>
+                    <p id="total-users">0</p>
+                </div>
+
+                <div class="card" id="order-card">
+                    <h2>Total Orders</h2>
+                    <p id="total-orders">0</p>
+                </div>
+
+                <div class="card" id="product-card">
+                    <h2>Total Products</h2>
+                    <p id="total-products">0</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+    <!-- Bootstrap JS + jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Link your existing JS -->
+
+    <script src="static/js/admin.js"></script>
+
+</body>
+</html>

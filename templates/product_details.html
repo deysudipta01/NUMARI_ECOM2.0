@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>{{ product['name'] }}</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" title="Favicon"/>
+
+
+    <!--=============== REMIX ICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/product_details.css') }}">
+
+
+    <!-- Namari Color CSS -->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/namari-color.css') }}">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+    <!-- Animate CSS-->
+
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css') }}">
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+
+
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="la-ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--End of Preloader-->
+
+<div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+    <div class="top-border wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></div>
+    <div class="right-border wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+    <div class="bottom-border wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;"></div>
+    <div class="left-border wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"></div>
+</div>
+
+<div id="wrapper">
+
+    <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
+        <div id="header" class="nav-collapse">
+            <div class="row clearfix">
+                <div class="col-1">
+
+                    <!--Logo-->
+                    <div id="logo">
+
+                        <!--Logo that is shown on the banner-->
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" id="banner-logo" alt="Landing Page"/>
+                    <!--End of Banner Logo-->
+
+                    <!--The Logo that is shown on the sticky Navigation Bar-->
+                    <img src="{{ url_for('static', filename='images/logo-2.png') }}" id="navigation-logo" alt="Landing Page"/>
+                    <!--End of Navigation Logo-->
+
+
+                    </div>
+                    <!--End of Logo-->
+
+                    <aside>
+
+                        <!--Social Icons in Header-->
+                        <ul class="social-icons">
+                            <li>
+                                <a target="_blank" title="Facebook" href="https://www.facebook.com/username">
+                                    <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="Google+" href="http://google.com/+username">
+                                    <i class="fa fa-google-plus fa-1x"></i><span>Google+</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="Twitter" href="http://www.twitter.com/username">
+                                    <i class="fa fa-twitter fa-1x"></i><span>Twitter</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="Instagram" href="http://www.instagram.com/username">
+                                    <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="behance" href="http://www.behance.net">
+                                    <i class="fa fa-behance fa-1x"></i><span>Behance</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--End of Social Icons in Header-->
+
+                    </aside>
+
+                    <!--Main Navigation-->
+                    <nav id="nav-main">
+
+                        <ul>
+                            <li>
+                                <a href="/adminlogin">Admin</a>
+                            </li>
+                            <li>
+                                <a href="#banner">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                            <li>
+                                <a href="#gallery">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="#services">Services</a>
+                            </li>
+                            <li>
+                                <a href="#testimonials">Testimonials</a>
+                            </li>
+                            <li>
+                                <a href="#clients">Clients</a>
+                            </li>
+                            <li>
+                                <a href="#pricing">Pricing</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--End of Main Navigation-->
+
+                    <div id="nav-trigger"><span></span></div>
+                    <nav id="nav-mobile"></nav>
+
+
+
+
+                </div>
+            </div>
+
+            <!-- Sticky Header Section -->
+            <div id="sticky_header-sticky-wrapper" class="nav-collapse" >
+                <div id="sticky_header" class="container clearfix">
+
+
+                    <!-- Header Buttons -->
+                    <div class="header-buttons">
+                        <div id="cart-button" class="cart-icon" onclick="toggleCart()">
+                            <div id="cart-count" class="cart-count-badge">0</div>
+                            <svg class="icon-default" width="36" height="30" viewBox="0 0 36 30" xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M7 7h22v18a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V7z" stroke="currentColor" stroke-width="2"></path>
+                                    <path d="M13 10V6c0-2.993 2.009-5 5-5s5 2.026 5 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <circle class="cart-not-empty" cx="18" cy="18" r="4" fill="currentColor"></circle>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div id="about-button" class="about-icon" onclick="toggleAbout()">
+                            <svg class="icon-default" width="36" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                <path d="M4.99509 3C3.89262 3 3 3.89323 3 4.99509V19.0049C3 20.1074 3.89323 21 4.99509 21H19.0049C20.1074 21 21 20.1068 21 19.0049V4.99509C21 3.89262 20.1068 3 19.0049 3H4.99509ZM5 19V5H19V19H5ZM12 8C12.5523 8 13 8.44772 13 9C13 9.55228 12.5523 10 12 10C11.4477 10 11 9.55228 11 9C11 8.44772 11.4477 8 12 8ZM12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12ZM12 15C10.8954 15 10 15.8954 10 17H8C8 14.7909 9.79086 13 12 13C14.2091 13 16 14.7909 16 17H14C14 15.8954 13.1046 15 12 15Z"></path>
+                            </svg>
+                        </div>
+
+                        <div id="orders-button" class="order-icon" onclick="toggleOrders()">
+                            <svg class="icon-default" width="36" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2C20.5523 2 21 2.44772 21 3V6.757L19 8.757V4H5V20H19V17.242L21 15.242V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20ZM21.7782 8.80761L23.1924 10.2218L15.4142 18L13.9979 17.9979L14 16.5858L21.7782 8.80761ZM13 12V14H8V12H13ZM16 8V10H8V8H16Z"></path></svg>
+                        </div>
+                        <div id="logout-button" class="logout-icon">
+                            <a href="{{ url_for('logout') }}">
+                                <svg class="icon-default" width="36" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="36" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M5 22C4.44772 22 4 21.5523 4 21V3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V6H18V4H6V20H18V18H20V21C20 21.5523 19.5523 22 19 22H5ZM18 16V13H11V11H18V8L23 12L18 16Z"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div><!--End of Header-->
+
+
+
+    </header>
+
+
+
+
+    <!--Main Content Area-->
+    <main id="content">
+
+
+           <!--products-->
+        <section id="clients" class="scrollto clearfix">
+            <div class="row clearfix">
+
+                    <div class="section-heading">
+                        <p class="section-subtitle">store/{{ product['name'] }}</p>
+                    </div>
+                <!-- Cart Modal (Hidden by Default) -->
+
+                    <div id="cart-modal" class="modal" style="display: none;">
+                        <h3>Your Cart</h3>
+                        <div id="cart-list">
+                            <!-- Cart items will be dynamically added here -->
+                        </div>
+                        <button onclick="toggleCart()">Close</button>
+                        <button onclick="window.location.href='/checkout'">Buy Now</button>
+                    </div>
+
+
+
+                    <!-- About Modal -->
+                    <div id="about-modal" class="modal" style="display: none;">
+                        <h3>About User</h3>
+                        <div id="user-details">
+                            <!-- User details dynamically added here -->
+                        </div>
+                        <button onclick="toggleAbout()">Close</button>
+                    </div>
+
+
+
+                    <!-- Orders Modal -->
+                    <div id="orders-modal" class="modal" style="display: none;">
+                        <h3>My Orders</h3>
+                        <div id="orders-list">
+                            <!-- Order history dynamically added here -->
+                        </div>
+                        <button onclick="toggleOrders()">Close</button>
+                    </div>
+
+                    <!-- Product Page Content -->
+                    <div class="page-content page-content--product appco_bg">
+
+                        <div class="page-width appco_bg">
+                            <div class="grid grid--product-images--partial appco_bg">
+                                <!-- Product Image Slider -->
+                                <div class="grid__item medium-up--three-fifths product-single__sticky appco_bg">
+                                    <div class="product__photos product__photos-template appco_bg" style="display: flex; gap: 20px;">
+
+                                        <!-- Thumbnail column -->
+                                        <div class="product-thumbnails" style="display: flex; flex-direction: column; gap: 10px;">
+                                            {% for img in product['images'] %}
+                                            <img src="{{ url_for('static', filename=img.replace('static/', '')) }}"
+                                                 alt="Thumbnail {{ loop.index }}"
+                                                 class="thumbnail-image"
+                                                 onclick="changeMainImage('{{ url_for('static', filename=img.replace('static/', '')) }}')"
+                                                 style="width: 90px; height: 90px; object-fit: cover; cursor: pointer;">
+                                            {% endfor %}
+                                        </div>
+
+                                        <!-- Main image -->
+                                        <div class="product__main-photos appco_bg" id="ProductPhotos">
+                                            <img id="main-product-image"
+                                                 src="{{ url_for('static', filename=product['images'][0].replace('static/', '')) }}"
+                                                 alt="{{ product['name'] }}"
+                                                 class="product-image"
+                                                 >
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Product Info Section -->
+                                <div class="grid__item medium-up--two-fifths product-single__info appco_bg">
+                                    <h1 class="product-title">{{ product['name'] }}</h1>
+                                    <p class="product-reviews">{{ product['id'] }}</p>
+                                    <p class="product-price">${{ product['price'] }}</p>
+                                    <div class="product-reviews">
+                                        <span class="stamped-badge-caption">{{ product['rating'] }}/5 based on {{ product['reviews_count'] }} reviews</span>
+                                    </div>
+
+                                    <div class="product-details appco_bg">
+                                        <h2>Product Description</h2>
+                                        <p>{{ product['description'] if product['description'] else 'No description available.' }}</p>
+
+                                        <h2>Care Instructions</h2>
+                                        <p>{{ product['care_instructions'] if product['care_instructions'] else 'No care instructions provided.' }}</p>
+                                    </div>
+                                    <!-- Add to Cart Button -->
+                                    <!-- Add to Cart Button -->
+                                    <div class="product-actions">
+                                        <button  data-product-id="{{ product['_id'] }}" class="add-to-cart btn--secondary" onclick="addToCart('{{ product['_id'] }}')">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product List Section -->
+                            <div class="related-products">
+                                <h2>Other Products You May Like</h2>
+                                <ul id="product-list" class="grid-container">
+                                    {% for product in products %}
+                                    <li class="grid-item">
+                                        <div class="product-card">
+                                            <a href="{{ url_for('product_details', product_id=product['_id']) }}" title="{{ product['name'] }}">
+                                               <img src="{{ url_for('static', filename=product['images'][0].replace('static/', '')) }}" alt="{{ product['name'] }}">
+
+                                                <div class="overlay">
+                                                    <span>{{ product['name'] }}</span>
+                                                </div>
+                                            </a>
+                                            <p>Price: ${{ product['price'] }}</p>
+                                            <button data-product-id="{{ product['_id'] }}" onclick="addToCart('{{ product['_id'] }}')">Add to Cart</button>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                    </div>
+
+
+                <!--start of Footer-->
+                <footer id="landing-footer" class="clearfix">
+                    <div class="border"></div>
+                        <div class="footer">
+                            <div class="f1">
+                                <div class="section-heading">
+
+                                        <h2 class="section-title">Shop Name</h2>
+                                        <p class="section-subtitle">Welcome to Plantae Paradise, your premier
+                                            destination for a unique and diverse collection of plants! Specializing
+                                            in Cacti, Succulents, Carnivorous plants, and an array of rare, collectible
+                                            flora, we offer an extraordinary experience for plant enthusiasts.
+                                            Nestled in the serene plains at the foothills, our nursery is surrounded
+                                            by lush greenery, providing a tranquil escape from the urban hustle.
+                                            We invite you to explore the wonders of nature at Plantae Paradise –
+                                            a refreshing retreat for all plant lovers. Join us in this green haven and discover the perfect plant to add to your collection!</p>
+                                    </div>
+                            </div>
+
+                            <div class="f2">
+
+                                <div class="section-heading">
+                                    <h2 class="section-title">Quick Links</h2>
+                                    <aside id="block-47" class="widget widget_block">
+                                        <ul class="quick-links">
+                                            <li style="text-align: left;"><a href="https://www.plantaeparadise.com/awesome-friendly-and-fulfilling-rewards-program/">Rewards</a></li>
+                                            <li><a href="https://www.plantaeparadise.com/how-to-grow-cactus-seeds/">How to grow Cactus Seeds?</a></li>
+                                            <li><a href="https://www.plantaeparadise.com/in-quest-of-best-cactus-media/">Are You in Search of Best Cactus Media?</a></li>
+                                            <li><a href="https://www.plantaeparadise.com/hakuna-matata//">Why Cactus melt away and leave you in Tears!</a></li>
+                                            <li><a href="https://www.plantaeparadise.com/kya-yeh-plant-chalega-will-this-plant-do-well-at-my-location/">Kya Yeh Plant Chalega?</a></li>
+                                            <li><a href="https://www.plantaeparadise.com/refund-policy/">Terms</a></li>
+                                            <li><a href="https://www.plantaeparadise.com/refund-policy/">Privacy Policy</a></li>
+                                        </ul>
+                                    </aside>
+
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="f3">
+                                <div class="section-heading">
+
+                                        <h2 class="section-title">Contact Us</h2>
+
+                                        <p class="section-subtitle"><strong>Phone: </strong>+918054477046<br>
+                                            <strong>Email: </strong>custsp@plantaeparadise.com<br>
+                                            <strong>Address:</strong> howrahIndia</p>
+                                    </div>
+                            </div>
+
+
+
+
+                            <!--End of Social Icons in Footer-->
+                        </div>
+
+                    <div class="copyright"><p id="copyright">Made with love by ShapingRain</p>
+                    </div>
+                </footer>
+                 <!--End of Footer-->
+
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+</div>
+
+
+
+
+<style>
+    #landing-footer, #landing-footer p, #landing-footer a {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 12px;
+    font-weight: normal;
+
+    color: black;
+}
+
+.section-heading {
+    padding: 1px 1px 1px 0;
+}
+
+.section-title {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    color: gray;
+}
+</style>
+
+<!-- Include JavaScript resources -->
+<script src="{{ url_for('static', filename='js/jquery.1.8.3.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/featherlight.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/featherlight.gallery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.enllax.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.stickyNavbar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/images-loaded.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/site.js') }}"></script>
+<script src="{{ url_for('static', filename='js/product.js') }}"></script>
+
+
+
+<script>
+
+
+function changeMainImage(src) {
+    document.getElementById('main-product-image').src = src;
+}
+
+
+// Accordion functionality
+document.addEventListener("DOMContentLoaded", function () {
+    const accordionBtns = document.querySelectorAll(".accordion");
+
+    accordionBtns.forEach((accordion) => {
+        accordion.onclick = function () {
+            this.classList.toggle("is-open");
+            let content = this.nextElementSibling;
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        };
+    });
+});
+
+
+
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".dot").forEach(dot => {
+        dot.addEventListener("click", function () {
+            const productId = this.dataset.product;
+            const newImageSrc = this.dataset.src;
+
+            // Change the image for the correct product
+            const img = document.getElementById(`product-image-${productId}`);
+            if (img) {
+                img.src = newImageSrc;
+            }
+
+            // Reset dot background colors in the same container
+            const dotContainer = document.getElementById(`dots-container-${productId}`);
+            if (dotContainer) {
+                dotContainer.querySelectorAll('.dot').forEach(dotEl => {
+                    dotEl.style.backgroundColor = 'lightgray';
+                });
+            }
+
+            // Highlight the clicked dot
+            this.style.backgroundColor = 'black';
+        });
+    });
+});
+</script>
+
+
+
+
+
+</body>
+</html>
