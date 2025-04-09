@@ -7,4 +7,5 @@ email-validator
 Werkzeug
 razorpay
 gunicorn
+setuptools
 
